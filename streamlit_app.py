@@ -1,5 +1,4 @@
-pip install -U deep-translator
-from deep_translator import GoogleTranslator
+from https://github.com/nidhaloff/deep-translator.git import GoogleTranslator
 import pandas as pd
 file = pd.read_excel("LATAM.xlsx")
 file = file.fillna('None')
