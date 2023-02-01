@@ -1,3 +1,4 @@
+!pip install -U deep-translator
 from deep_translator import GoogleTranslator
 import pandas as pd
 file = pd.read_excel("LATAM.xlsx")
