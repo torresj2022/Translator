@@ -1,3 +1,13 @@
+from deep-translator/deep_translator import GoogleTranslator
 import streamlit as st
-x = st.slider('x')
-st.write(x, 'squared is', x * x)
+import pandas as pd
+st.text_input("text to translate", key="text")
+
+def translate(x):
+    try:
+        y = GoogleTranslator(source='auto', target='en').translate(x)
+    except:
+        y = "did not translate"
+    return y
+ 
+translate(text)
