@@ -1,7 +1,6 @@
-from deep_translator.google import GoogleTranslator
+from deep_translator import GoogleTranslator
 import streamlit as st
 import pandas as pd
-st.text_input("text to translate", key="text")
 
 def translate(x):
     try:
@@ -10,4 +9,4 @@ def translate(x):
         y = "did not translate"
     return y
  
-translate(text)
+st.write(translate(st.text_input("text to translate", key="text")))
