@@ -1,4 +1,4 @@
-from deep_translator import GoogleTranslator
+from deep_translator.google import GoogleTranslator
 import streamlit as st
 import pandas as pd
 st.text_input("text to translate", key="text")
