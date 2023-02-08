@@ -11,11 +11,12 @@ def excel_file (df):
     # Write each dataframe to a different worksheet.
         df.to_excel(writer, sheet_name='Sheet1')
         writer.save()
-        st.download_button(
-        label="Download excel file",
-        data=buffer,
-        file_name="translated_file.xlsx",
-        mime="application/vnd.ms-excel")
+        return
+                 st.download_button(
+                    label="Download excel file",
+                    data=buffer,
+                    file_name="translated_file.xlsx",
+                    mime="application/vnd.ms-excel")
 
 def translate(x):
     if x != 'None':
