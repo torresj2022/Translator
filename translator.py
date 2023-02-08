@@ -1,12 +1,12 @@
 from deep_translator import GoogleTranslator
 import streamlit as st
 import pandas as pd
-from io import StringIO, BytesIO
+import io
 
 st.write("# Welcome to the file translator")
 
 def excel_file (df):
-    buffer = BytesIO()
+    buffer = io.BytesIO()
     with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     # Write each dataframe to a different worksheet.
         df.to_excel(writer, sheet_name='Sheet1')
@@ -58,6 +58,4 @@ if uploaded_file is not None:
        for i in range(0,len(y)): 
             file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
             ##st.table(file[[y[i],"translated"+y[i]]])
-   
-
        excel_file(file)
