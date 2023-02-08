@@ -25,8 +25,8 @@ if uploaded_file is not None:
     columns)
     #file = pd.read_excel(x)
     file = file.fillna('None')
-    st.write(file)
-    ##if y: 
-       ## for i in range(0,len(y)): 
-        ##    file["translation"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
-         ##   st.table(file["translation"+y[i]])
+    file = file.iloc[:10]
+    if y: 
+       for i in range(0,len(y)): 
+            file["translation"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
+            st.table(file["translation"+y[i]])
