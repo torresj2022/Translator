@@ -13,11 +13,7 @@ def translate(x):
         return y
     else:
         return x
-   
- def convert_df(df):
-     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    return df.to_csv().encode('utf-8')
-        
+       
 uploaded_file = st.file_uploader("Please add the csv/excel file to translate")
 if uploaded_file is not None:
 ###x =  st.text_input("Please add file path", value ="", key="text")
@@ -44,7 +40,7 @@ if uploaded_file is not None:
             ##st.table(file[[y[i],"translated"+y[i]]])
    
 
-        csv = convert_df(file)
+        csv = file.to_csv().encode('utf-8')
 
         st.download_button(
         label="Download data as CSV",
