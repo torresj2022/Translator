@@ -31,5 +31,5 @@ if uploaded_file is not None:
     file = file.iloc[:100]
     if y: 
        for i in range(0,len(y)): 
-            file["translation"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
-       st.table(file)
+            file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
+            st.table(file[[y[i],"translated"+y[i]]])
