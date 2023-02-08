@@ -40,9 +40,9 @@ if uploaded_file is not None:
             ##st.table(file[[y[i],"translated"+y[i]]])
    
 
-        csv = file.to_csv().encode('utf-8')
+       csv = file.to_csv().encode('utf-8')
 
-        st.download_button(
+       st.download_button(
         label="Download data as CSV",
         data=csv,
         file_name='translation.csv',
