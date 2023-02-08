@@ -14,7 +14,7 @@ uploaded_file = st.file_uploader("Choose a file")
 if uploaded_file is not None:
 ###x =  st.text_input("Please add file path", value ="", key="text")
     # Can be used wherever a "file-like" object is accepted:
-    file = pd.read_csv(uploaded_file)
+    file = pd.read_excel(uploaded_file)
     
 
 ###if x != '':
