@@ -14,7 +14,7 @@ def translate(x):
     else:
         return x
 
-uploaded_file = st.file_uploader("Please add the excel file to translate")
+uploaded_file = st.file_uploader("Please add the csv/excel file to translate")
 if uploaded_file is not None:
 ###x =  st.text_input("Please add file path", value ="", key="text")
     # Can be used wherever a "file-like" object is accepted:
