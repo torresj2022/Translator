@@ -1,9 +1,22 @@
 from deep_translator import GoogleTranslator
 import streamlit as st
 import pandas as pd
-from io import StringIO
+from io import StringIO, BytesIO()
 
 st.write("# Welcome to the file translator")
+
+def excel_file (df):
+    buffer = BytesIO()
+    with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+    # Write each dataframe to a different worksheet.
+        df.to_excel(writer, sheet_name='Sheet1')
+        writer.save()
+        st.download_button(
+        label="Download excel file",
+        data=buffer,
+        file_name="translated_file.xlsx",
+        mime="application/vnd.ms-excel")
+
 def translate(x):
     if x != 'None':
         try:
@@ -47,11 +60,4 @@ if uploaded_file is not None:
             ##st.table(file[[y[i],"translated"+y[i]]])
    
 
-       excel = file.to_excel()
-
-       st.download_button(
-        label="Download data as excel",
-        data=excel,
-        file_name='translation.xlsx',
-        mime="application/vnd.ms-excel",
-        )
+       excel_file(file)
