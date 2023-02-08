@@ -18,7 +18,10 @@ uploaded_file = st.file_uploader("Please add the excel file to translate")
 if uploaded_file is not None:
 ###x =  st.text_input("Please add file path", value ="", key="text")
     # Can be used wherever a "file-like" object is accepted:
-    file = pd.read_excel(uploaded_file)
+    if 'xls' in uploaded_file.name:
+        file = pd.read_excel(uploaded_file)
+    if 'csv' in uploaded_file.name:
+        file = pd.read_csv(uploaded_file)
     
 
 ###if x != '':
