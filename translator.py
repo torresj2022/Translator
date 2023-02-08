@@ -46,4 +46,4 @@ if uploaded_file is not None:
         label="Download data as excel",
         data=excel,
         file_name='translation.xlsx',
-        mime='text/csv',)
+        )
