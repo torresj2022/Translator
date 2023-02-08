@@ -14,6 +14,13 @@ def translate(x):
     else:
         return x
        
+def excel_file(df):
+    writer = pd.ExcelWriter('pandas_simple.xlsx', engine='xlsxwriter')
+    # Convert the dataframe to an XlsxWriter Excel object.
+    df.to_excel(writer, sheet_name='Sheet1')
+    # Close the Pandas Excel writer and output the Excel file.
+    writer.close()
+
 uploaded_file = st.file_uploader("Please add the csv/excel file to translate")
 if uploaded_file is not None:
 ###x =  st.text_input("Please add file path", value ="", key="text")
@@ -46,4 +53,5 @@ if uploaded_file is not None:
         label="Download data as excel",
         data=excel,
         file_name='translation.xlsx',
+        mime="application/vnd.ms-excel",
         )
