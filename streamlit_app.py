@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 from io import StringIO
 
+st.write("# Welcome to the file translator")
 def translate(x):
     if x != 'None':
         try:
