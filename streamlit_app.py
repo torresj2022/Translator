@@ -4,11 +4,14 @@ import pandas as pd
 from io import StringIO
 
 def translate(x):
-    try:
-        y = GoogleTranslator(source='auto', target='en').translate(x)
-    except:
-        y = "did not translate"
-    return y
+    if x != 'None':
+        try:
+            y = GoogleTranslator(source='auto', target='en').translate(x)
+        except:
+            y = "did not translate"
+        return y
+    else:
+        return x
 
 uploaded_file = st.file_uploader("Please add the excel file to translate")
 if uploaded_file is not None:
