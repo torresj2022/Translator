@@ -40,10 +40,10 @@ if uploaded_file is not None:
             ##st.table(file[[y[i],"translated"+y[i]]])
    
 
-       csv = file.to_csv().encode('utf-8')
+       excel = file.to_excel()
 
        st.download_button(
-        label="Download data as CSV",
-        data=csv,
-        file_name='translation.csv',
+        label="Download data as excel",
+        data=excel,
+        file_name='translation.xlsx',
         mime='text/csv',)
