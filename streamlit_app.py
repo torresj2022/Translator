@@ -32,4 +32,4 @@ if uploaded_file is not None:
     if y: 
        for i in range(0,len(y)): 
             file["translation"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
-            st.table(file[[y[i], "translation"+y[i]]])
+       st.table(file[[y[i], "translation"+y[i]]])
