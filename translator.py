@@ -1,7 +1,7 @@
 from deep_translator import GoogleTranslator
 import streamlit as st
 import pandas as pd
-from io import StringIO, BytesIO()
+from io import StringIO, BytesIO
 
 st.write("# Welcome to the file translator")
 
