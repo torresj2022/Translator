@@ -3,3 +3,4 @@ pandas
 streamlit
 deep-translator
 openpyxl
+xlsxwriter
