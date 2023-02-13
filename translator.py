@@ -2,7 +2,7 @@ from deep_translator import GoogleTranslator
 import streamlit as st
 import pandas as pd
 import io
-import time
+import datetime
 
 st.write("# Welcome to the file translator")
 
@@ -41,10 +41,10 @@ if uploaded_file is not None:
        
        for i in range(0,len(y)): 
             st.write("Column", y[i],  "is being translated. There are ", len(file[y[i]]), " rows to translate")
-            st = time.time()
+            st = datetime.time()
             file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
             ##st.table(file[[y[i],"translated "+y[i]]])
-            et = time.time()
+            et = datetime.time()
             elapsed_time = et - st
             st.write("Execution time:", elapsed_time, "seconds")
             st.write("Column", y[i],  "translated, it has been saved on column", "translated "+y[i])
