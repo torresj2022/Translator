@@ -38,8 +38,9 @@ if uploaded_file is not None:
     
     if y:
        
-       for i in range(0,len(y)): 
-            st.write("Column", y[i],  "is being translated. There are ", len(file[y[i]]), " rows to translate")
+       for i in range(0,len(y)):
+            counted_rows = len(file[y[i]])
+            st.write("Column", y[i],  "is being translated. There are ", counted_rows , " rows to translate. Estimate time to complete :", counted_rows * 0.00098333, " minutes")
             
             file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
             ##st.table(file[[y[i],"translated "+y[i]]])
