@@ -43,7 +43,7 @@ if uploaded_file is not None:
     file = file.fillna('None')
     file = file
     
-    if y:
+    if y and st.button('Translate'):
        
        for i in range(0,len(y)):
             counted_rows = len(file[y[i]])
