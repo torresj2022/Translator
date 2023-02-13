@@ -4,3 +4,4 @@ streamlit
 deep-translator
 openpyxl
 xlsxwriter
+googletrans==4.0.0rc1
