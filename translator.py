@@ -37,10 +37,12 @@ if uploaded_file is not None:
     file = file.iloc[:1000]
     
     if y:
-       st.write("Column(s)", (i for i in y),  "is/are being translated, wait a second")
+       
        for i in range(0,len(y)): 
+            st.write("Column", y[i],  "is being translated")
             file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
-            ##st.table(file[[y[i],"translated"+y[i]]])
+            ##st.table(file[[y[i],"translated "+y[i]]])
+            st.write("Column", y[i],  "translated, it has been saved on column", "translated "+y[i])
        st.write("Success, download your file from the following button")
        buffer = io.BytesIO()
        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
