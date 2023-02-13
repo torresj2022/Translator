@@ -6,8 +6,6 @@ from googletrans import Translator
 
 st.write("# Welcome to the file translator")
 
-
-translator = Translator()
 def translate(x):
     if x != 'None' and x != '.':
         try:
@@ -17,7 +15,7 @@ def translate(x):
                 y = Translator.translate(text).text
             except:
                 y = "did not translate"
-        return y
+            return y
     else:
         return x
 
