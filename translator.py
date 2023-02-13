@@ -6,7 +6,7 @@ import io
 st.write("# Welcome to the file translator")
 
 def translate(x):
-    if x != 'None' or x != '.':
+    if x != 'None' and x != '.':
         try:
             y = GoogleTranslator(source='auto', target='en').translate(x)
         except:
