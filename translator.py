@@ -18,7 +18,7 @@ def excel_file (df):
                     mime="application/vnd.ms-excel")
 
 def translate(x):
-    if x != 'None':
+    if x != 'None' or x != '.':
         try:
             y = GoogleTranslator(source='auto', target='en').translate(x)
         except:
@@ -52,12 +52,14 @@ if uploaded_file is not None:
     columns)
     #file = pd.read_excel(x)
     file = file.fillna('None')
-    file = file.iloc[:100]
+    file = file.iloc[:1000]
     
-    if y: 
+    if y:
+       st.write("The data is being translated, wait a second") 
        for i in range(0,len(y)): 
             file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
             ##st.table(file[[y[i],"translated"+y[i]]])
+       st.write("Sucess, download your file from the following button")
        buffer = io.BytesIO()
        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
          # Write each dataframe to a different worksheet.
