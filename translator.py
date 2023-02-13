@@ -34,7 +34,7 @@ if uploaded_file is not None:
     columns)
     #file = pd.read_excel(x)
     file = file.fillna('None')
-    file = file.iloc[:1000]
+    file = file
     
     if y:
        
