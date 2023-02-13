@@ -10,12 +10,15 @@ def translate(x):
     if x != 'None' and x != '.':
         try:
             y = GoogleTranslator(source='auto', target='en').translate(x)
-        except:
-            try:
-                y = Translator.translate(text).text
-            except:
-                y = "did not translate"
             return y
+        except:
+                try:
+                    y = Translator.translate(text).text
+                    return y
+                except:
+                    y = "did not translate"
+                    return y
+            
     else:
         return x
 
