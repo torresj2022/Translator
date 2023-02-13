@@ -44,7 +44,7 @@ if uploaded_file is not None:
             st = time.time()
             file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
             ##st.table(file[[y[i],"translated "+y[i]]])
-            time.sleeps(3)
+            time.sleep(3)
             et = time.time()
             elapsed_time = et - st
             st.write("Execution time:", elapsed_time, "seconds")
