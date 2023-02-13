@@ -55,5 +55,6 @@ if uploaded_file is not None:
             st.download_button(
                     label="Download excel file",
                     data=buffer,
+                    disable = True,
                     file_name="translated_file.xlsx",
                     mime="application/vnd.ms-excel")
