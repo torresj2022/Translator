@@ -59,7 +59,7 @@ if uploaded_file is not None:
        for i in range(0,len(y)): 
             file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
             ##st.table(file[[y[i],"translated"+y[i]]])
-       st.write("Sucess, download your file from the following button")
+       st.write("Success, download your file from the following button")
        buffer = io.BytesIO()
        with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
          # Write each dataframe to a different worksheet.
