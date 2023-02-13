@@ -39,7 +39,7 @@ if uploaded_file is not None:
     if y:
        
        for i in range(0,len(y)): 
-            st.write("Column", y[i],  "is being translated. There are ", file[file[y[i]]].count(), " rows to translate")
+            st.write("Column", y[i],  "is being translated. There are ", len(file[y[i]]), " rows to translate")
             file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
             ##st.table(file[[y[i],"translated "+y[i]]])
             st.write("Column", y[i],  "translated, it has been saved on column", "translated "+y[i])
