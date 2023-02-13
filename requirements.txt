@@ -4,4 +4,3 @@ streamlit
 deep-translator
 openpyxl
 xlsxwriter
-time
