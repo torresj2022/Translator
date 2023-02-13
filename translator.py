@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import io
 from googletrans import Translator
+import swifter
 
 st.write("# Welcome to the file translator")
 
@@ -49,7 +50,7 @@ if uploaded_file is not None:
             counted_rows = len(file[y[i]])
             st.write("Column", y[i],  "is being translated. There are ", counted_rows , " rows to translate.")
             
-            file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
+            file["translated"+y[i]] = file.swifter.apply(lambda x: translate(x[y[i]]), axis = 1)
             ##st.table(file[[y[i],"translated "+y[i]]])
        
             st.write("Column", y[i],  "translated, it has been saved on column", "translated "+y[i])
