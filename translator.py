@@ -5,18 +5,6 @@ import io
 
 st.write("# Welcome to the file translator")
 
-def excel_file (df):
-    buffer = io.BytesIO()
-    with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-    # Write each dataframe to a different worksheet.
-        df.to_excel(writer, sheet_name='Sheet1')
-        writer.save()
-        st.download_button(
-                    label="Download excel file",
-                    data=buffer,
-                    file_name="translated_file.xlsx",
-                    mime="application/vnd.ms-excel")
-
 def translate(x):
     if x != 'None' or x != '.':
         try:
@@ -26,13 +14,7 @@ def translate(x):
         return y
     else:
         return x
-       
-def excel_file(df):
-    writer = pd.ExcelWriter('pandas_simple.xlsx', engine='xlsxwriter')
-    # Convert the dataframe to an XlsxWriter Excel object.
-    df.to_excel(writer, sheet_name='Sheet1')
-    # Close the Pandas Excel writer and output the Excel file.
-    writer.close()
+
 
 uploaded_file = st.file_uploader("Please add the csv/excel file to translate")
 if uploaded_file is not None:
@@ -55,7 +37,7 @@ if uploaded_file is not None:
     file = file.iloc[:1000]
     
     if y:
-       st.write("The data is being translated, wait a second") 
+       st.write("Column(s) {y} is/are being translated, wait a second").format(y)
        for i in range(0,len(y)): 
             file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
             ##st.table(file[[y[i],"translated"+y[i]]])
