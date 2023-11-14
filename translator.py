@@ -1,9 +1,7 @@
 from deep_translator import GoogleTranslator
 import streamlit as st
 import pandas as pd
-import io
 from googletrans import Translator
-import swifter
 
 
 
@@ -31,19 +29,17 @@ uploaded_file = st.file_uploader("Please add the csv/excel file to translate")
 if uploaded_file is not None:
 ###x =  st.text_input("Please add file path", value ="", key="text")
     # Can be used wherever a "file-like" object is accepted:
-    if 'xls' in uploaded_file.name:
+    if '.xls' in uploaded_file.name or '.xlsx' in uploaded_file.name:
         file = pd.read_excel(uploaded_file)
-    if 'csv' in uploaded_file.name:
+    elif '.csv' in uploaded_file.name:
         file = pd.read_csv(uploaded_file)
     
 
-###if x != '':
-    ##file = pd.read_excel(x)
+
     columns = file.columns
     y =  st.multiselect(
-    'What are the columns to translate',
-    columns)
-    #file = pd.read_excel(x)
+    'What are the columns to translate',columns)
+
     file = file.fillna('None')
     file = file
     
@@ -58,13 +54,16 @@ if uploaded_file is not None:
        
             st.write("Column", y[i],  "translated, it has been saved on column", "translated "+y[i])
        st.write("Success, download your file from the following button")
-       buffer = io.BytesIO()
-       with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-         # Write each dataframe to a different worksheet.
-            file.to_excel(writer, sheet_name='Sheet1')
-            writer.save()
-            st.download_button(
-                    label="Download excel file",
-                    data=buffer,
-                    file_name="translated_file.xlsx",
-                    mime="application/vnd.ms-excel")
+       def convert_df(df):
+           return df.to_csv().encode('utf-8')
+
+
+       csv = convert_df(file)
+
+       st.download_button(
+            "Download the file",
+            csv,
+            "translated_file.csv",
+            "text/csv",
+            key='browser-data'
+            )
