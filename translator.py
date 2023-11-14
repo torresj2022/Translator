@@ -45,14 +45,12 @@ if uploaded_file is not None:
     file = file
     
     if y and st.button('Translate'):
-       from pandarallel import pandarallel
-       pandarallel.initialize()
-       
+       for i in range
        for i in range(0,len(y)):
             counted_rows = len(file[y[i]])
             st.write("Column", y[i],  "is being translated. There are ", counted_rows , " rows to translate.")
             
-            file["translated"+y[i]] = file.parallel_apply(lambda x: translate(x[y[i]]), axis = 1)
+            file["translated"+y[i]] = file.apply(lambda x: translate(x[y[i]]), axis = 1)
             ##st.table(file[[y[i],"translated "+y[i]]])
        
             st.write("Column", y[i],  "translated, it has been saved on column", "translated "+y[i])
