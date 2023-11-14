@@ -5,6 +5,9 @@ import io
 from googletrans import Translator
 import swifter
 
+
+
+
 st.write("# Welcome to the file translator")
 
 def translate(x):
@@ -45,7 +48,8 @@ if uploaded_file is not None:
     file = file
     
     if y and st.button('Translate'):
-       for i in range
+       st.set_option('server.maxUploadSize', 1024)
+       
        for i in range(0,len(y)):
             counted_rows = len(file[y[i]])
             st.write("Column", y[i],  "is being translated. There are ", counted_rows , " rows to translate.")
