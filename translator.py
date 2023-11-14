@@ -48,7 +48,6 @@ if uploaded_file is not None:
     file = file
     
     if y and st.button('Translate'):
-       st.set_option('server.maxUploadSize', 1024)
        
        for i in range(0,len(y)):
             counted_rows = len(file[y[i]])
