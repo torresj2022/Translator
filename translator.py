@@ -52,12 +52,16 @@ if uploaded_file is not None:
             # Assuming 'dataset' is your data
             batches = create_batches(file, 1000)
             st.write("This file will be processed in {} batches due processing time issues with streamlit".format(len(batches)))
+            progress_bar = st.progress(0)
             for number, data in enumerate(batches):
-                st.write("processing batch {}".format(number + 1))
-                data["translated"+y[i]] = data.apply(lambda x: translate(x[y[i]]), axis = 1)
+                st.write("Processing batch {}".format(number + 1))
+                data["translated"+y[i]] = data.apply(lambda x: translate(x[y[i]]), axis=1)
                 final.append(data)
-                st.write("Batch {} has been processed".format(number + 1))
-            st.write("Column", y[i],  "translated, it has been saved on column", "translated "+y[i])
+                progress = (number + 1) / len(batches)
+                progress_bar.progress(progress)
+            
+            st.write("Column", y[i], "translated. It has been saved in column", "translated "+y[i])
+            
 
        st.write("Success, download your file from the following button")
        def convert_df(df):
