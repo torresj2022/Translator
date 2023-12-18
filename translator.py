@@ -2,9 +2,11 @@ from deep_translator import GoogleTranslator
 import streamlit as st
 import pandas as pd
 from googletrans import Translator
-import math
+import streamlit_ext as ste
 
-
+@st.cache_data
+def save_data(df):
+    return df.copy()
 
 
 st.write("# Welcome to the file translator")
@@ -16,7 +18,7 @@ def translate(x):
             return y
         except:
                 try:
-                    y = Translator.translate(text).text
+                    y = Translator.translate(x).text
                     return y
                 except:
                     y = "did not translate"
@@ -24,6 +26,7 @@ def translate(x):
             
     else:
         return x
+
 def create_batches(data, batch_size):
                 return [data[i:i + batch_size] for i in range(0, len(data), batch_size)]
 
@@ -67,13 +70,11 @@ if uploaded_file is not None:
        def convert_df(df):
             return df.to_csv().encode('utf-8')
 
-       final_data = pd.concat(final) 
-       csv = convert_df(final_data)
+       final_data = save_data(pd.concat(final))
 
-       st.download_button(
-            "Download the file",
+       csv = convert_df(save_data(final_data))
+
+       ste.download_button(
+            "Download the translation file",
             csv,
-            "translated_file_{}.csv".format(number + 1),
-            "text/csv",
-            key='browser-data'
-                    )
+            "translated_file_{}.csv".format(number + 1) )
