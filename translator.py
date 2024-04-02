@@ -26,7 +26,8 @@ def translate(x):
             
     else:
         return x
-
+        
+@st.cache_data
 def create_batches(data, batch_size):
                 return [data[i:i + batch_size] for i in range(0, len(data), batch_size)]
 
